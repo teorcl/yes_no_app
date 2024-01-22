@@ -13,7 +13,7 @@ class ChatProvider extends ChangeNotifier {
 
   Future<void> sendMenssage({required String textMessage}) async {
     if (textMessage.isEmpty) {
-      return; // Si no escriben nada no manda un nuevo mensaje
+      return;
     }
 
     final newMessage = Message(message: textMessage, sender: FromWho.me);

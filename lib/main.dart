@@ -10,6 +10,7 @@ import 'package:dart_openai/dart_openai.dart';
 
 void main() {
   OpenAI.apiKey = Env.apiKey;
+  OpenAI.showLogs = true;
   runApp(const MyApp());
 }
 
