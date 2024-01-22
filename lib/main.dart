@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:yes_no_app/env/env.dart';
 import 'package:yes_no_app/presentation/chat/chat_page.dart';
 import 'package:yes_no_app/presentation/provider/chat_provider.dart';
 import 'package:yes_no_app/theme/app_theme.dart';
+import 'package:dart_openai/dart_openai.dart';
 
-void main() => runApp(const MyApp());
+
+
+void main() {
+  OpenAI.apiKey = Env.apiKey;
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
