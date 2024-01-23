@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:yes_no_app/domain/entities/message.dart';
 
 class YourMessageBubble extends StatelessWidget {
-  const YourMessageBubble({super.key});
+  const YourMessageBubble({
+    super.key,
+    required this.message,
+  });
+
+  final Message message;
+
 
   @override
   Widget build(BuildContext context) {
@@ -15,16 +22,16 @@ class YourMessageBubble extends StatelessWidget {
             color: colors.secondary,
             borderRadius: BorderRadius.circular(20),
           ),
-          child: const Padding(
-            padding: EdgeInsets.all(8.0),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Text(
-              'Hola mundo',
-              style: TextStyle(color: Colors.white),
+              message.message,
+              style: const TextStyle(color: Colors.white),
             ),
           ),
         ),
         const SizedBox(height: 5),
-        _ImageBubble(),
+        _ImageBubble(imageUrl: message.urlimage!),
         const SizedBox(height: 10),
       ],
     );
@@ -33,6 +40,10 @@ class YourMessageBubble extends StatelessWidget {
 
 class _ImageBubble extends StatelessWidget {
   // Como este widget es privado es decir solo lo puede usar este archivo entonces no nita la key
+  const _ImageBubble({
+    required this.imageUrl,
+  });
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +52,7 @@ class _ImageBubble extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: Image.network(
-        'https://yesno.wtf/assets/yes/1-af11222d8d4af90bdab8fc447c8cfebf.gif',
+        imageUrl,
         width: size.width * 0.7,
         height: 150,
         fit: BoxFit.cover,
